@@ -141,32 +141,6 @@ namespace LakeInn.Areas.Administrator.Controllers
             return View(banner);
         }
 
-        // GET: Administrator/Banners/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Banner banner = db.Banners.Find(id);
-            if (banner == null)
-            {
-                return HttpNotFound();
-            }
-            return View(banner);
-        }
-
-        // POST: Administrator/Banners/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Banner banner = db.Banners.Find(id);
-            db.Banners.Remove(banner);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         // Slides
         public ActionResult EditSlides(int? id)
         {

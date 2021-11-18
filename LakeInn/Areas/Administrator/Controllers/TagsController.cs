@@ -97,31 +97,6 @@ namespace LakeInn.Areas.Administrator.Controllers
             return View(tags);
         }
 
-        // GET: Administrator/Tags/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Tags tags = db.Tags.Find(id);
-            if (tags == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tags);
-        }
-
-        // POST: Administrator/Tags/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Tags tags = db.Tags.Find(id);
-            db.Tags.Remove(tags);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        } 
         public JsonResult DeleteTag(int id)
         {
             Tags tags = db.Tags.Find(id);

@@ -159,31 +159,6 @@ namespace LakeInn.Areas.Administrator.Controllers
             return View(room);
         }
 
-        // GET: Administrator/Rooms/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Room room = db.Rooms.Find(id);
-            if (room == null)
-            {
-                return HttpNotFound();
-            }
-            return View(room);
-        }
-
-        // POST: Administrator/Rooms/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Room room = db.Rooms.Find(id);
-            db.Rooms.Remove(room);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
         public JsonResult DeleteRoom(int id)
         {
             Room room = db.Rooms.Find(id);

@@ -138,31 +138,6 @@ namespace LakeInn.Areas.Administrator.Controllers
             return View(team);
         }
 
-        // GET: Administrator/Teams/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Team team = db.Teams.Find(id);
-            if (team == null)
-            {
-                return HttpNotFound();
-            }
-            return View(team);
-        }
-
-        // POST: Administrator/Teams/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Team team = db.Teams.Find(id);
-            db.Teams.Remove(team);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
         public JsonResult DeleteTeam(int id)
         {
             Team team = db.Teams.Find(id);

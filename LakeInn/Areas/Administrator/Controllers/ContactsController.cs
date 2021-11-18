@@ -89,31 +89,7 @@ namespace LakeInn.Areas.Administrator.Controllers
             return View(contact);
         }
 
-        // GET: Administrator/Contacts/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Contact contact = db.Contacts.Find(id);
-            if (contact == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contact);
-        }
-
-        // POST: Administrator/Contacts/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Contact contact = db.Contacts.Find(id);
-            db.Contacts.Remove(contact);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        
         public JsonResult DeleteContact(int id)
         {
             Contact contact = db.Contacts.Find(id);

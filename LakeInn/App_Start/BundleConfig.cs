@@ -25,6 +25,39 @@ namespace LakeInn
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/admin/js").Include(
+                      "~/Areas/Administrator/TempLTE/plugins/jquery/jquery.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/jquery-ui/jquery-ui.min.js",
+                      "~/Scripts/jquery.validate.min.js",
+                      "~/Scripts/jquery.validate.unobtrusive.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/bootstrap/js/bootstrap.bundle.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/chart.js/Chart.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/sparklines/sparkline.js",
+                      "~/Areas/Administrator/TempLTE/plugins/jqvmap/jquery.vmap.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/jqvmap/maps/jquery.vmap.usa.js",
+                      "~/Areas/Administrator/TempLTE/plugins/jquery-knob/jquery.knob.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/moment/moment.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/daterangepicker/daterangepicker.js",
+                      "~/Areas/Administrator/TempLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/summernote/summernote-bs4.min.js",
+                      "~/Areas/Administrator/TempLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+                      "~/Areas/Administrator/TempLTE/dist/js/adminlte.js",
+                      "~/Areas/Administrator/TempLTE/dist/js/demo.js",
+                      "~/Scripts/chosen.jquery.min.js",
+                      "~/Areas/Administrator/TempLTE/dist/js/pages/dashboard.js",
+                      "~/Scripts/toastr.min.js",
+                      "~/Areas/Administrator/TempLTE/dist/js/script.js"));
+
+            bundles.Add(new StyleBundle("~/admin/css").Include(
+                      "~/Areas/Administrator/TempLTE/plugins/fontawesome-free/css/all.min.css",
+                      "~/Areas/Administrator/TempLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css",
+                      "~/Areas/Administrator/TempLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
+                      "~/Areas/Administrator/TempLTE/plugins/jqvmap/jqvmap.min.css",
+                      "~/Areas/Administrator/TempLTE/dist/css/adminlte.min.css",
+                      "~/Areas/Administrator/TempLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+                      "~/Areas/Administrator/TempLTE/plugins/daterangepicker/daterangepicker.css",
+                      "~/Areas/Administrator/TempLTE/plugins/summernote/summernote-bs4.min.css"));
+
             bundles.Add(new StyleBundle("~/DataTable/css").Include(
                       "~/Areas/Administrator/TempLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css",
                       "~/Areas/Administrator/TempLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css",

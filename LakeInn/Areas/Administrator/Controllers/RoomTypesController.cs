@@ -96,31 +96,6 @@ namespace LakeInn.Areas.Administrator.Controllers
             return View(roomType);
         }
 
-        // GET: Administrator/RoomTypes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            RoomType roomType = db.RoomTypes.Find(id);
-            if (roomType == null)
-            {
-                return HttpNotFound();
-            }
-            return View(roomType);
-        }
-
-        // POST: Administrator/RoomTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            RoomType roomType = db.RoomTypes.Find(id);
-            db.RoomTypes.Remove(roomType);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         public JsonResult DeleteRoomType(int id)
         {

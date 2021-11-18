@@ -96,31 +96,6 @@ namespace LakeInn.Areas.Administrator.Controllers
             return View(bedType);
         }
 
-        // GET: Administrator/BedTypes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            BedType bedType = db.BedTypes.Find(id);
-            if (bedType == null)
-            {
-                return HttpNotFound();
-            }
-            return View(bedType);
-        }
-
-        // POST: Administrator/BedTypes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            BedType bedType = db.BedTypes.Find(id);
-            db.BedTypes.Remove(bedType);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         public JsonResult DeleteBed(int id)
         {
