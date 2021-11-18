@@ -1,0 +1,40 @@
+﻿<div class="right col-xl-4 col-lg-4 col-md-12">
+    <div class="row" style="width: 100%;">
+        <div class="room-category right-item col-12">
+            <p class="title">Categories</p>
+            @foreach (var item in ViewBag.Cat as IEnumerable<LakeInn.Models.DataModels.Category>)
+            {
+                <p class="item"><i class="fa fa-angle-right"></i><a href="@Url.Action("Article","Home",new {idCate = item.Id })"> @item.CateName</a></p>
+            }
+        </div>
+        <div class="slice"></div>
+        <div class="post right-item col-12">
+            <p class="title">Recent Posts</p>
+            @foreach (var item in ViewBag.Art as IEnumerable<LakeInn.Models.DataModels.Article>)
+            {
+                <div class="item">
+                    <div class="row" style="margin-left: 0; margin-right: 0;">
+                        <div class="col-4 image" style="background-image: url(@item.Image);"></div>
+                        <div class="col-8">
+                            <p class="article"><a href="@Url.Action("DetailArticle","Home",new { id=item.Id})">@item.Title</a></p>
+                            <p class="time"><span class="date">@item.Date_Created.ToString("MMM dd, yyyy")</span><span class="mes"><i class="fas fa-comment"></i> 0</span></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="slice"></div>
+        <div class="calendar right-item col-12">
+            <p class="title">Calendar</p>
+            <div id="calendar-init"></div>
+        </div>
+        <div class="slice"></div>
+        <div class="tags right-item col-12">
+            <p class="title">Tags</p>
+            @foreach (var item in ViewBag.Tags as IEnumerable<LakeInn.Models.DataModels.Tags>)
+            {
+                <p class="item"><a href="@Url.Action("Article","Home",new { idTag = item.Id})">@item.TagName</a></p>
+            }
+        </div>
+    </div>
+</div>

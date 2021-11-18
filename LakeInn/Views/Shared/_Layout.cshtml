@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LakeInn</title>
+    @Styles.Render("~/Frontend/css")
+    <link rel="icon" type="image/png" href="~/Content/img/favicon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0&appId=1284795755267576&autoLogAppEvents=1" nonce="wVN9Evcr"></script>
+    @Html.Partial("../Partial/_Header")
+    @RenderBody()
+    @Html.Partial("../Partial/_Footer")
+
+    @*Scripts*@
+    @Scripts.Render("~/Frontend/js")
+    <script src="~/Scripts/js/popper.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/myjs/script.js"></script>
+    <script>
+
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<LakeInn.Models.DataModels.Article>
+@using PagedList.Mvc
+@{
+    var cmt = ViewBag.comment as IEnumerable<LakeInn.Models.DataModels.Comment_Article>;
+}
+@{
+    ViewBag.Title = "Article";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/css/check-article.css">
+@Html.Partial("../Partial/_PageTitle")
+<!-- portfolio -->
+<div class="portfolio container-fluid">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    var count = 0;
+                    foreach (var c in cmt)
+                    {
+                        if (c.Article_Id == item.Id)
+                        {
+                            count++;
+                        }
+                    }
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 item">
+                        <div class="image" style="background-image: url(@item.Image);"></div>
+                        <div class="info-layer">
+                            <div class="detail">
+                                <p class="title"><a href="@Url.Action("DetailArticle","Home",new {id=item.Id })">@item.Title</a></p>
+                                <p class="time">@item.Date_Created.ToString("MMM dd, yyyy") <span><i class="fas fa-comment"></i> @count</span></p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <div class="col-12 pagination">
+                    @Html.PagedListPager(Model, page => Url.Action("Article", new { page }), new PagedListRenderOptions
+                    {
+                       DisplayLinkToIndividualPages = true,
+                       DisplayPageCountAndCurrentLocation = false,
+                       MaximumPageNumbersToDisplay = 10,
+                       LiElementClasses = new string[] { "page-block" },
+                   })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end portfolio -->
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/js/check-article.js"></script>
+}

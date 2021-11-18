@@ -1,0 +1,79 @@
+﻿@model IEnumerable<LakeInn.Models.DataModels.Tags>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutHome.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Tags Table</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row">
+                <div class="col-sm-12">
+                    <table id="example1" class="table table-bordered table-hover dataTable dtr-inline">
+                        <thead>
+                            <tr>
+                                <th width="70%">
+                                    @Html.DisplayNameFor(model => model.TagName)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TagName)
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit","Tags",new { id = item.Id })" class="btn btn-success">Edit</a>|
+                                        <a href="@Url.Action("Details","Tags",new { id = item.Id })" class="btn btn-primary">Details</a> |
+                                        <button type="button" class="btn btn-danger click-delete" data-id="@item.Id">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+@section scripts{
+    
+    <script>
+        $(".click-delete").click(function () {
+            var id = $(this).attr("data-id");
+            var cf = confirm("Are you sure this record?");
+            if (cf) {
+                $.ajax({
+                type: "GET",
+                url: "@Url.Action("DeleteTag")",
+                data: { id: id },
+                success: function (rs) {
+                    toastr.success(
+                        'Delete successfully!',
+                        'Notification!',
+                        {
+                            timeOut: 1000,
+                            fadeOut: 1000,
+                            onHidden: function () {
+                                window.location.reload();
+                            }
+                        });
+                }
+            });
+            }
+        });
+    </script>
+}

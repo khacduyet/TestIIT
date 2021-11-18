@@ -1,0 +1,40 @@
+﻿@model LakeInn.Models.DataModels.Art_Tags
+@{
+    ViewBag.Title = "Tags";
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">SET TAGS FOR ARTICLE</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    @using (Html.BeginForm("Tags", "Articles", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card-body">
+            @Html.HiddenFor(model => model.Id)
+            <input type="text" hidden name="Art_Id" value="@ViewBag.artId" />
+
+            <div class="form-group">
+                <label>Tags</label>
+                <div class="col-md-10">
+                    @Html.ListBoxFor(model => model.selectedIdArray, (MultiSelectList)ViewBag.Tags, new { @id = "selectTags", @class = "form-control", @multiple = "multiple" })
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-warning" })
+        </div>
+    }
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $("#selectTags").chosen();
+    </script>
+}

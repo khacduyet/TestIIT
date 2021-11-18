@@ -1,0 +1,135 @@
+﻿@model IEnumerable<LakeInn.Models.DataModels.User>
+@{ var session = Session["User"] as LakeInn.Models.DataModels.User;}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutHome.cshtml";
+}
+@if (session.Id == 1)
+{
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Table User</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="card-body p-0" style="display: block;">
+        <table class="table table-striped projects">
+            <thead>
+                <tr>
+                    <th style="width: 1%">
+                        #
+                    </th>
+                    <th style="width: 20%">
+                        Full Name
+                    </th>
+                    <th style="width: 30%">
+                        Email
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th style="width: 8%" class="text-center">
+                        Status
+                    </th>
+                    <th style="width: 20%">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.FullName
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td class="project_progress">
+                            <img src="@item.Avatar" style="width: 100px" alt="Img" />
+                        </td>
+                        <td class="project-state">
+                            @if (session.Id == 1)
+                            {
+                                <a href="javascript:void(0)" class="click-change" data-id="@item.Id">
+                                    @if (item.Status)
+                                    {
+                                        <span class="badge badge-success">Unlock</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Lock</span>
+                                    }
+                                </a>
+                            }
+                            else
+                            {
+                                if (item.Status)
+                                {
+                                    <span class="badge badge-success">Unlock</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">Lock</span>
+                                }
+                            }
+                        </td>
+                        <td class="project-actions text-right">
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Details","Users",new { id= item.Id})">
+                                <i class="fas fa-folder">
+                                </i>
+                                View
+                            </a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+@section scripts{
+    <script>
+        $(".click-change").click(function () {
+            var id = $(this).attr('data-id');
+            var cf = confirm("Are you sure change status this user!");
+            if (cf) {
+                if (id == @session.Id) {
+                    toastr.error("Don't lock yourself!", "Notification!");
+                    return false;
+                }
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("ChangeStatus")",
+                    data: { id: id },
+                    success: function () {
+                        toastr.success(
+                            'Change status this user success!',
+                            'Notification!',
+                            {
+                                timeOut: 500,
+                                fadeOut: 500,
+                                onHidden: function () {
+                                    window.location.reload();
+                                }
+                            });
+                    }
+                });
+            }
+        });
+    </script>
+}

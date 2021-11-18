@@ -1,0 +1,72 @@
+﻿@{
+    var rs = ViewBag.rs as LakeInn.Models.ViewModels.RoomViewModel;
+    ViewBag.Title = rs.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/css/detail-room.css">
+@Html.Partial("../Partial/_PageTitle")
+<div class="detail-room container-fluid">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="left col-xl-8 col-lg-8 col-md-12">
+                    <div class="row" style="width: 100%;">
+                        <div class="room-img left-item" style="background-image: url(@rs.Image);">
+                            <img src="@rs.Image" class="bg-replace">
+                            <div class="zoom-layer" style="animation-name: layerHide;">
+                                <div class="zoom-btn" style="animation-name: btnHideDown;">
+                                    <i class="far fa-eye"></i>
+                                </div>
+                            </div>
+                            <div class="img-popup" id="img-popup">
+                                <div class="img-box" id="img-box">
+                                    <img src="">
+                                </div>
+                                <div class="close-popup">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="overview left-item">
+                            <p class="room-type">@rs.Name</p>
+                            <p class="price">Start from <span>$@rs.Price</span> /night</p>
+                        </div>
+                        <div class="criteria left-item">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <p class="item"><i class="far fa-check-square"></i> Room Type: @rs.TypeName</p>
+                                    <p class="item"><i class="far fa-check-square"></i> Max Guests: @rs.MaxGuests</p>
+                                    <p class="item"><i class="far fa-check-square"></i> Bed Type: @rs.TypeBed</p>
+                                    <p class="item"><i class="far fa-check-square"></i> Room Faces: @rs.RoomFace</p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <p class="item"><i class="far fa-check-square"></i> Wifi: @((rs.Wifi)? "Yes": "No")</p>
+                                    <p class="item"><i class="far fa-check-square"></i> Breakfast: @((rs.Breakfast)? "Yes": "No")</p>
+                                    <p class="item"><i class="far fa-check-square"></i> Room Service: @((rs.RoomService)? "Yes": "No")</p>
+                                    <p class="item"><i class="far fa-check-square"></i> Airport pickup: @((rs.AirportPickup)? "Yes": "No")</p>
+                                </div>
+                                <div class="col-12">
+                                    <p class="description">@rs.Description</p>
+                                </div>
+                                <div class="col-12">
+                                    <button><a href="@Url.Action("RoomRate")">all rooms</a></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment left-item">
+                            @* START *@
+                            <div class="fb-comments" data-href="http://localhost:53184/" data-width="100%" data-num-posts="5"></div>
+                            @* END *@
+                        </div>
+                    </div>
+                </div>
+                @Html.Partial("../Partial/_RightSideBar")
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/js/detail-room.js"></script>
+}

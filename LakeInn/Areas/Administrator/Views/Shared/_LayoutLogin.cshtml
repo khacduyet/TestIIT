@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LakeInn | Login</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Areas/Administrator/TempLTE/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/Areas/Administrator/TempLTE/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Areas/Administrator/TempLTE/dist/css/adminlte.min.css">
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+            </div>
+            <div class="card-body">
+                @RenderBody()
+            </div>
+        </div>
+        <!-- /.card -->
+    </div>
+    @* Toastr *@
+    <div>
+        <input type="hidden" id="success" value="@TempData["success"]" />
+        <input type="hidden" id="info" value="@TempData["info"]" />
+        <input type="hidden" id="warning" value="@TempData["warning"]" />
+        <input type="hidden" id="error" value="@TempData["error"]" />
+    </div>
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <script src="~/Areas/Administrator/TempLTE/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Areas/Administrator/TempLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Areas/Administrator/TempLTE/dist/js/adminlte.min.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Areas/Administrator/TempLTE/dist/js/script.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>
+
+
+

@@ -1,0 +1,137 @@
+﻿@model LakeInn.Models.DataModels.Room
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Room</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BedTypes.TypeBed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BedTypes.TypeBed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomTypes.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomTypes.TypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxGuests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxGuests)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomFace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomFace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wifi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wifi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Breakfast)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Breakfast)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RoomService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoomService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AirportPickup)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AirportPickup)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Updated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Updated)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

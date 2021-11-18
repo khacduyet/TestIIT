@@ -1,0 +1,215 @@
+﻿@model LakeInn.Models.DataModels.Article
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/css/detail-room.css">
+
+@Html.Partial("../Partial/_PageTitle")
+<!-- detail room -->
+<div class="detail-room container-fluid">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="left col-xl-8 col-lg-8 col-md-12">
+                    <div class="row" style="width: 100%;">
+                        <div class="room-img left-item">
+                            <img src="@Model.Image" class="bg-replace">
+                            <div class="zoom-layer">
+                                <div class="zoom-btn">
+                                    <i class="far fa-eye"></i>
+                                </div>
+                            </div>
+                            <div class="img-popup" id="img-popup">
+                                <div class="img-box" id="img-box">
+                                    <img src="">
+                                </div>
+                                <div class="close-popup">
+                                    <i class="fas fa-times"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="criteria left-item">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p class="description">
+                                        @Model.Description
+                                    </p>
+                                </div>
+                                <div class="col-12">
+                                    <p class="article-tag">
+                                        Tags: @foreach (var item in ViewBag.lstTag as IEnumerable<LakeInn.Models.DataModels.Tags>)
+                                        {
+                                            <span style="text-decoration: underline"><a href="@Url.Action("Article","Home",new { idTag = item.Id})">@item.TagName</a></span>
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <style>
+                            .title-comment {
+                                display: block;
+                                width: 100%;
+                            }
+
+                            .slice {
+                                width: 100%;
+                                height: 1px;
+                                background-color: #ccc;
+                            }
+
+                            .area-comment {
+                                width: 100%;
+                                background-color: white;
+                                display: block;
+                                margin: 10px;
+                                padding: 15px;
+                            }
+
+                                .area-comment h6 {
+                                    color: #385898;
+                                    text-decoration: underline;
+                                }
+
+                                .area-comment span {
+                                    font-size: 12px;
+                                    color: #90949c;
+                                }
+                        </style>
+                        <div class="slice"></div>
+                        <h3 class="title-comment"><b>Comment</b> </h3>
+                        @foreach (var item in ViewBag.Comment as IEnumerable<LakeInn.Models.DataModels.Comment_Article>)
+                        {
+                            var cur_time = DateTime.Now;
+                            var time_elapsed = cur_time - item.Date_Created;
+                            var years = time_elapsed.Days * 365;
+                            var months = time_elapsed.Days * 30;
+                            var weeks = time_elapsed.Days * 7;
+                            var days = time_elapsed.Days;
+                            var hours = time_elapsed.Hours;
+                            var minutes = time_elapsed.Minutes;
+                            var seconds = time_elapsed.Seconds;
+                            // Seconds
+                            <div class="area-comment">
+                                <h6><b>@item.Name</b></h6>
+                                <div>@item.Comment</div>
+                                <span>
+                                    @if (years > 0)
+                                    {
+                                        <span>Ago @years year </span>
+                                    }
+                                    else
+                                    {
+                                        if (months > 0)
+                                        {
+                                            <span>Ago @months month</span>
+                                        }
+                                        else
+                                        {
+                                            if (weeks > 0)
+                                            {
+                                                <span>Ago @weeks week</span>
+                                            }
+                                            else
+                                            {
+                                                if (days > 0)
+                                                {
+                                                    <span>Ago @days day</span>
+                                                }
+                                                else
+                                                {
+                                                    if (hours > 0)
+                                                    {
+                                                        <span>Ago @hours hour</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (minutes > 0)
+                                                        {
+                                                            <span>Ago @minutes minute</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            if (seconds <= 60)
+                                                            {
+                                                                <span>Ago @seconds second </span>
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                </span>
+                            </div>
+                        }
+                        <div class="slice"></div>
+                        <div class="comment left-item">
+                            <form method="post" id="frmComment">
+                                <p class="title">Add Comments</p>
+                                <p class="note">Your email address will not be published. Required fields are marked *</p>
+                                <textarea name="Comment" id="ComCmt" placeholder="Comment"></textarea>
+                                <input type="text" id="ComName" name="Name" placeholder="Name *" class="name">
+                                <input type="email" id="ComEmail" name="Email" placeholder="Email *" class="email">
+                                <button id="click-post" type="button" data-id="@Model.Id">post comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @Html.Partial("../Partial/_RightSideBar")
+            </div>
+        </div>
+    </div>
+</div>
+<!-- detail room -->
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/js/detail-room.js"></script>
+    <script>
+        $("#click-post").click(function () {
+            var idArt = $(this).attr('data-id');
+            var cmt = $("#ComCmt").val();
+            var name = $("#ComName").val();
+            var email = $("#ComEmail").val();
+            var mailformat = /^\w+([\.-]?\w+)*@@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var chk = true;
+            $("#frmComment").find("input").each(function (i, e) {
+                if ($(this).val() == "") {
+                    chk = false;
+                }
+            });
+            if (chk == false) {
+                toastr.error("Please fill out all field *", "Notification!");
+                return false;
+            }
+            if (!mailformat.test(email)) {
+                toastr.error("Email invalid!", "Notification!");
+                return false;
+            }
+            if (cmt == "") {
+                toastr.error("Please enter one message!", "Notification!");
+                return false;
+            }
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("sendComment","Contact")",
+                data: { Name: name, Email: email, Comment: cmt, Article_Id: idArt },
+                success: function (rs) {
+                    toastr.success(
+                        'Your has send comment success, please wait administrator censorship!',
+                        'Notification!',
+                        {
+                            timeOut: 1000,
+                            fadeOut: 1000,
+                            onHidden: function () {
+                                window.location.reload();
+                            }
+                        });
+                },
+                error: function (msg) {
+                    alert(msg.fail);
+                }
+            });
+        });
+    </script>
+}

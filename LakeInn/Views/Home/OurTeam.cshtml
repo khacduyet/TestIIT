@@ -1,0 +1,247 @@
+﻿@{
+    ViewBag.Title = "Our Team";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/css/our-team.css">
+
+@Html.Partial("../Partial/_PageTitle")
+<!-- introduce rooms -->
+@{var b1 = ViewBag.Banner_I1 as LakeInn.Models.DataModels.Banner;
+    <div class="container-fluid introduce" style="background-image: url(@b1.Image)">
+        <p class="title">@b1.Title</p>
+        <p class="detail">@b1.Content</p>
+        <div class="book-btn">
+            <a href="@Url.Action("RoomRate")">
+                <input type="submit" name="" value="our rooms & rates">
+            </a>
+        </div>
+    </div>
+}
+<!-- end introduce rooms -->
+<!-- blogs -->
+<!-- list of member, light bg -->
+<div class="container-fluid blogs manage-team">
+    <div class="container title">
+        <p>Management team</p>
+        <div class="icon-title">
+            <img src="~/Content/img/icon-title.png">
+        </div>
+    </div>
+    <div class="container info">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <div class="img" style="background-image: url(/Content/img/tourist1.jpg);"></div>
+                        <div class="individual-contact">
+                            <p class="icon">
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="manage-name"><a href="detail-team.html">Mary Roxine</a></p>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <div class="img" style="background-image: url(/Content/img/tourist2.jpg);"></div>
+                        <div class="individual-contact">
+                            <p class="icon">
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="manage-name"><a href="detail-team.html">Mark Kerner</a></p>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <div class="img" style="background-image: url(/Content/img/tourist3.jpg);"></div>
+                        <div class="individual-contact">
+                            <p class="icon">
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="manage-name"><a href="detail-team.html">Petty Dawn</a></p>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <div class="img" style="background-image: url(/Content/img/tourist4.jpg);"></div>
+                        <div class="individual-contact">
+                            <p class="icon">
+                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p class="manage-name"><a href="detail-team.html">John Sharon</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end blogs -->
+<!-- review -->
+<div class="container-fluid review">
+    <p class="title">Testimonial</p>
+    <div class="icon-title">
+        <img src="~/Content/img/icon-title.png">
+    </div>
+    <div class="container guest">
+        <div class="row review-slide">
+            @foreach (var item in ViewBag.Team as IEnumerable<LakeInn.Models.DataModels.Team>)
+            {
+                <div class="col-12 item">
+                    <p class="detail">
+                        @item.Description
+                    </p>
+                    <div class="guest-info row">
+                        <div class="col-6 info-item">
+                            <div class="guest-img" style="background-image: url(@item.Avatar);"></div>
+                        </div>
+                        <div class="col-6 info-item">
+                            <div class="row">
+                                <div class="col-12 name"><p>@item.FullName</p></div>
+                                <div class="col-12 job"><p>@item.Position</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- end review -->
+<!-- blogs -->
+<!-- list of member, dark bg -->
+<div class="container-fluid blogs professionals">
+    <div class="container title">
+        <p>The best of professionals</p>
+        <div class="icon-title">
+            <img src="~/Content/img/icon-title.png">
+        </div>
+    </div>
+    <div class="container info">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <div class="img" style="background-image: url(/Content/img/tourist8.jpg);"></div>
+                    </div>
+                    <p class="professional-name"><a href="detail-team.html">Joana Marine</a></p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <div class="img" style="background-image: url(/Content/img/tourist6.jpg);"></div>
+                    </div>
+                    <p class="professional-name"><a href="detail-team.html">Tom Marcus</a></p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <div class="img" style="background-image: url(/Content/img/tourist5.jpg);"></div>
+                    </div>
+                    <p class="professional-name"><a href="detail-team.html">Jean Lemay</a></p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <div class="img" style="background-image: url(/Content/img/tourist7.jpg);"></div>
+                    </div>
+                    <p class="professional-name"><a href="detail-team.html">Harry Duncan</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="blog-btn">
+            <a href="#">
+                <input type="submit" name="" value="become a member">
+            </a>
+        </div>
+    </div>
+</div>
+<!-- end blogs -->
+<!-- stats -->
+<div class="container-fluid stats">
+    <div class="container title">
+        <p>Numbers we are proud of</p>
+        <div class="icon-title">
+            <img src="~/Content/img/icon-title.png">
+        </div>
+    </div>
+    <div class="container info">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <p class="number">12</p>
+                        <div class="slice"></div>
+                        <p class="criteria">Luxury Rooms</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <p class="number">43</p>
+                        <div class="slice"></div>
+                        <p class="criteria">Dining Options</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <p class="number">854</p>
+                        <div class="slice"></div>
+                        <p class="criteria">Happy Guests</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <p class="number">9.5</p>
+                        <div class="slice"></div>
+                        <p class="criteria">Average Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end stats -->
+<!-- check room -->
+<div class="container-fluid check">
+    <div class="container check-items">
+        <div class="row">
+            <div class="col-8">
+                <p class="ad">Free kayaking lessons for our guests!</p>
+                <p class="detail">Do you fancy kayaking? How about fishing? We always have to offer something you'll enjoy.</p>
+            </div>
+            <div class="col-4" style="display: flex; justify-content: center; align-items: center;">
+                <button><a href="@Url.Action("RoomRate")">check rooms & rates</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end check room -->
+
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/js/our-team.js"></script>
+}

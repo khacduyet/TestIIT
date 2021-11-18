@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@Html.Partial("../Partial/_PageTitle")
+
+<!-- welcome -->
+<div class="container-fluid welcome">
+    <div class="container words">
+        <p class="title">Welcome to the Lake Inn!</p>
+        <div class="icon-title">
+            <img src="~/Content/img/icon-title.png">
+        </div>
+        <p class="short-des">We are pleased to be your premier breakfast and bed for rest, activities and nature on Beautiful Lake.</p>
+    </div>
+    <div class="container images">
+        <div class="row">
+            <div class="col-xl-8 col-lg-12 col-md-12 itemBox" style="height: 400px;">
+                <div class="item" style="background-image: url(@ViewBag.About_I1);"></div>
+            </div>
+            <div class="col-xl-4 col-lg-12 col-md-12">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-6 col-md-12 itemBox" style="height: 200px;">
+                        <div class="item" style="background-image: url(@ViewBag.About_I2);"></div>
+                    </div>
+                    <div class="col-xl-12 col-lg-6 col-md-12 itemBox" style="height: 200px;">
+                        <div class="item" style="background-image: url(@ViewBag.About_I3);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container detail">
+        <p>Smithhammer House at Terry Point is the perfect New Hampshire Inn. with nature at our doorstep and many attractions nearby. On our scenic, quiet property, you will be treated to idyllic views of Beautiful Lake and its glistening water, our guardian mountains in the distance and luscious gardens.</p>
+        <div class="more">
+            <a href="@Url.Action("About")">
+                <input type="submit" name="" value="more about us">
+            </a>
+        </div>
+    </div>
+</div>
+<!-- end welcome -->
+<!-- stats -->
+<div class="container-fluid stats">
+    <div class="container title">
+        <p>Numbers we are proud of</p>
+        <div class="icon-title">
+            <img src="~/Content/img/icon-title.png">
+        </div>
+    </div>
+    <div class="container info">
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <p class="number">12</p>
+                        <div class="slice"></div>
+                        <p class="criteria">Luxury Rooms</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <p class="number">43</p>
+                        <div class="slice"></div>
+                        <p class="criteria">Dining Options</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <p class="number">854</p>
+                        <div class="slice"></div>
+                        <p class="criteria">Happy Guests</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                <div class="itemBox">
+                    <div class="item">
+                        <p class="number">9.5</p>
+                        <div class="slice"></div>
+                        <p class="criteria">Average Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end stats -->
+<!-- introduce rooms 2 -->
+@{var b2 = ViewBag.Banner_I2 as LakeInn.Models.DataModels.Banner;
+    <div class="container-fluid introduce2" style="background-image: url(@b2.Image)">
+        <p class="detail">@b2.Title</p>
+        <p class="title">@b2.Content</p>
+        <div class="book-btn">
+            <a href="#">
+                <input type="submit" name="" value="intersted?">
+            </a>
+        </div>
+    </div>
+}
+<!-- end introduce rooms 2 -->
+<!-- review -->
+<div class="container-fluid review">
+    <p class="title">Our Guests say</p>
+    <div class="icon-title">
+        <img src="~/Content/img/icon-title.png">
+    </div>
+    <div class="container guest">
+        <div class="row review-slide">
+            @foreach (var item in ViewBag.Team as IEnumerable<LakeInn.Models.DataModels.Team>)
+            {
+                <div class="col-12 item">
+                    <p class="detail">
+                        @item.Description
+                    </p>
+                    <div class="guest-info row">
+                        <div class="col-6 info-item">
+                            <div class="guest-img" style="background-image: url(@item.Avatar);"></div>
+                        </div>
+                        <div class="col-6 info-item">
+                            <div class="row">
+                                <div class="col-12 name"><p>@item.FullName</p></div>
+                                <div class="col-12 job"><p>@item.Position</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+</div>
+<!-- end review -->
+<!-- check room -->
+<div class="container-fluid check">
+    <div class="container check-items">
+        <div class="row">
+            <div class="col-8">
+                <p class="ad">Free kayaking lessons for our guests!</p>
+                <p class="detail">Do you fancy kayaking? How about fishing? We always have to offer something you'll enjoy.</p>
+            </div>
+            <div class="col-4" style="display: flex; justify-content: center; align-items: center;">
+                <button><a href="@Url.Action("RoomRate")">check rooms & rates</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end check room -->

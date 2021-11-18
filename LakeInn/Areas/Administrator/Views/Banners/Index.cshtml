@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutHome.cshtml";
+    var banner = ViewBag.Banner as IEnumerable<LakeInn.Models.DataModels.Banner>;
+    var slides = ViewBag.Slides as IEnumerable<LakeInn.Models.DataModels.Slides>;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Slides</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0" style="display: block;">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Title
+                            </th>
+                            <th style="width: 30%">
+                                Content
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Status
+                            </th>
+                            <th style="width: 20%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in slides)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Title
+                                </td>
+                                <td>
+                                    @item.Content
+                                </td>
+                                <td class="project_progress">
+                                    <img src="@item.Image" style="width: 200px" alt="Img" />
+                                </td>
+                                <td class="project-state">
+                                    @if (item.Status)
+                                    {
+                                        <span class="badge badge-success">Unlock</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Lock</span>
+                                    }
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="@Url.Action("EditSlides","Banners",new { id= item.Id})">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        
+    </div>
+    <div class="col-md-12">
+        @*<p>
+            @Html.ActionLink("Create Banner", "Create", null, new { @class = "btn btn-success" })
+        </p>*@
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Banner</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0" style="display: block;">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 20%">
+                                Title
+                            </th>
+                            <th style="width: 30%">
+                                Content
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                Status
+                            </th>
+                            <th style="width: 20%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in banner)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Title
+                                </td>
+                                <td>
+                                    @item.Content
+                                </td>
+                                <td class="project_progress">
+                                    <img src="@item.Image" style="width: 200px" alt="Img" />
+                                </td>
+                                <td class="project-state">
+                                    @if (item.Status)
+                                    {
+                                        <span class="badge badge-success">Unlock</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Lock</span>
+                                    }
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-info btn-sm" href="@Url.Action("Edit","Banners",new { id= item.Id})">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+</div>

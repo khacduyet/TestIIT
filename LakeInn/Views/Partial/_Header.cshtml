@@ -1,0 +1,85 @@
+﻿<div class="backToTop">
+    <i class="fa fa-angle-up"></i>
+</div>
+<!-- end back to top -->
+<!-- preloader -->
+<div id="preloader">
+    <div class="lds-dual-ring"></div>
+</div>
+<!-- preloader -->
+<!-- header -->
+<div class="container-fluid header-box">
+    <div class="row header-info">
+        <div class="container">
+            <div class="row" style="position: relative;">
+                <p class="info">
+                    <span>
+                        <a href="#"><i class="fa fa-phone"></i> 0242 242 0777</a>
+                    </span>
+                    <span>
+                        <a href="#"><i class="fas fa-envelope"></i> info@webhotel.vn</a>
+                    </span>
+                </p>
+                <p class="icon">
+                    <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row header">
+        <div class="container">
+            <div class="row forResLogo" style="position: relative;">
+                <a href="@Url.Action("Index")"><img src="~/Content/img/logo.webp"></a>
+                <div class="menu">
+                    <ul>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "current-page" : "")">
+                            <a href="@Url.Action("Index")" class="title">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" class="title">Feature</a>
+                            <div class="drop-menu">
+                                <div class="col-12 item"><a href="@Url.Action("About")">About</a></div>
+                                <div class="col-12 item"><a href="@Url.Action("OurTeam")">Team</a></div>
+                                <div class="col-12 item"><a href="@Url.Action("Contact")">Contact</a></div>
+                            </div>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "RoomRate" ? "current-page" : "")">
+                            <a href="@Url.Action("RoomRate")" class="title">Room & Rates</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Article" ? "current-page" : "")">
+                            <a href="@Url.Action("Article")" class="title">Blog</a>
+                        </li>
+                        <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Galery" ? "current-page" : "")">
+                            <a href="@Url.Action("Galery")" class="title">Gallery</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Contact")" class="title">Shop</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- res header button -->
+                <div class="headerBtn">
+                    <div class="box" id="box1">
+                        <div class="line1 line"></div>
+                        <div class="line2 line"></div>
+                        <div class="line3 line"></div>
+                    </div>
+                    <div class="box" id="box2">
+                        <div class="line4 line"></div>
+                        <div class="line5 line"></div>
+                        <div class="line6 line"></div>
+                    </div>
+                    <div class="box" id="box3">
+                        <div class="line7 line"></div>
+                        <div class="line8 line"></div>
+                        <div class="line9 line"></div>
+                    </div>
+                </div>
+                <!-- end res header button -->
+            </div>
+        </div>
+    </div>
+</div>
