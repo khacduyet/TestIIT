@@ -2,6 +2,7 @@
 using LakeInn.Models.DataModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -49,6 +50,37 @@ namespace LakeInn.Areas.Administrator.Controllers
                 return RedirectToAction("Index");
             }
             return View(user);
+        }
+        [HttpPost]
+        public ActionResult ChangeAvatar(int Id, HttpPostedFileBase fileImage)
+        {
+            var user = db.Users.Find(Id);
+            var allowedExtensions = new[] {
+                    ".Jpg", ".png", ".jpg", "jpeg"
+                };
+            if (fileImage != null)
+            {
+                var ext = Path.GetExtension(fileImage.FileName);
+                if (allowedExtensions.Contains(ext)) //check what type of extension  
+                {
+                    // Lưu ảnh theo đường dẫn
+                    fileImage.SaveAs(Path.Combine(Server.MapPath("~/Areas/Administrator/Data/Images/"), Path.GetFileName(fileImage.FileName)));
+                    // Gán đường dẫn cho trường Avatar
+                    user.Avatar = "/Areas/Administrator/Data/Images/" + fileImage.FileName;
+                    db.SaveChanges();
+                    Session["User"] = user;
+                    TempData["success"] = "Change avatar success!";
+                    return RedirectToAction("MyProfile", user);
+                }
+                else
+                {
+                    ModelState.AddModelError("Extension", "File extension incorrect!");
+                    TempData["error"] = "Fail extension";
+                    return RedirectToAction("MyProfile",user);
+                }
+            }
+            TempData["error"] = "You dont choose image!";
+            return RedirectToAction("MyProfile", user);
         }
 
         public ActionResult ChangePassword()

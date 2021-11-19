@@ -5,6 +5,9 @@
     var slides = ViewBag.Slides as IEnumerable<LakeInn.Models.DataModels.Slides>;
 }
 
+<p>
+    @Html.ActionLink("Create Slide", "Create", null, new { @class = "btn btn-success" })
+</p>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -81,12 +84,9 @@
             </div>
             <!-- /.card-body -->
         </div>
-        
+
     </div>
     <div class="col-md-12">
-        @*<p>
-            @Html.ActionLink("Create Banner", "Create", null, new { @class = "btn btn-success" })
-        </p>*@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Banner</h3>
@@ -163,3 +163,4 @@
         </div>
     </div>
 </div>
+

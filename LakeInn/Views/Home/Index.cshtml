@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    var cmt = ViewBag.comment as IEnumerable<LakeInn.Models.DataModels.Comment_Article>;
 }
 <link rel="stylesheet" href="~/Areas/Administrator/TempLTE/dist/css/adminlte.min.css">
 
@@ -166,13 +167,21 @@
         <div class="row">
             @foreach (var item in ViewBag.Articles as IEnumerable<LakeInn.Models.DataModels.Article>)
             {
+                var count = 0;
+                foreach (var c in cmt)
+                {
+                    if (c.Article_Id == item.Id)
+                    {
+                        count++;
+                    }
+                }
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="itemBox">
                         <div class="item">
                             <div class="img" style="background-image: url(@item.Image);"></div>
                             <div class="slice"></div>
                             <p class="info-title">@item.Title</p>
-                            <p class="time">@item.Date_Created.ToString("MMM dd,yyyy") <span><i class="fas fa-comment"></i> 0</span></p>
+                            <p class="time">@item.Date_Created.ToString("MMM dd,yyyy") <span><i class="fas fa-comment"></i> @count</span></p>
                             <div class="slice"></div>
                             <p class="detail">
                                 @item.Description

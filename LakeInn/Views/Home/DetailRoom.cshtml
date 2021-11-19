@@ -2,6 +2,7 @@
     var rs = ViewBag.rs as LakeInn.Models.ViewModels.RoomViewModel;
     ViewBag.Title = rs.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var cmt = ViewBag.comment as IEnumerable<LakeInn.Models.DataModels.Comment_Article>;
 }
 
 <link rel="stylesheet" type="text/css" href="~/Content/css/detail-room.css">

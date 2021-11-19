@@ -49,7 +49,7 @@ namespace LakeInn.Areas.Administrator.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Content,Image,Status")] Banner banner, HttpPostedFileBase fileImage)
+        public ActionResult Create([Bind(Include = "Id,Title,Content,Image,Status")] Slides slides, HttpPostedFileBase fileImage)
         {
             if (ModelState.IsValid)
             {
@@ -64,25 +64,25 @@ namespace LakeInn.Areas.Administrator.Controllers
                         // Lưu ảnh theo đường dẫn
                         fileImage.SaveAs(Path.Combine(Server.MapPath("~/Areas/Administrator/Data/Images/"), Path.GetFileName(fileImage.FileName)));
                         // Gán đường dẫn cho trường Avatar
-                        banner.Image = "/Areas/Administrator/Data/Images/" + fileImage.FileName;
+                        slides.Image = "/Areas/Administrator/Data/Images/" + fileImage.FileName;
                     }
                     else
                     {
                         ModelState.AddModelError("Image", "File extension incorrect!");
-                        return View(banner);
+                        return View(slides);
                     }
-                    db.Banners.Add(banner);
+                    db.Slides.Add(slides);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 else
                 {
                     ModelState.AddModelError("Image", "Image not null!");
-                    return View(banner);
+                    return View(slides);
                 }
             }
 
-            return View(banner);
+            return View(slides);
         }
 
         // GET: Administrator/Banners/Edit/5

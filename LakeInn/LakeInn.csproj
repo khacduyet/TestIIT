@@ -139,6 +139,7 @@
     <Compile Include="Areas\Administrator\Controllers\BannersController.cs" />
     <Compile Include="Areas\Administrator\Controllers\BaseController.cs" />
     <Compile Include="Areas\Administrator\Controllers\BedTypesController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\BooksController.cs" />
     <Compile Include="Areas\Administrator\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administrator\Controllers\CommentController.cs" />
     <Compile Include="Areas\Administrator\Controllers\ContactsController.cs" />
@@ -2353,6 +2354,11 @@
     <Content Include="Areas\Administrator\Views\Comment\Index.cshtml" />
     <Content Include="Areas\Administrator\Views\Comment\Details.cshtml" />
     <Content Include="Areas\Administrator\Views\Shared\_PartialHeader.cshtml" />
+    <Content Include="Areas\Administrator\Views\Books\Create.cshtml" />
+    <Content Include="Areas\Administrator\Views\Books\Delete.cshtml" />
+    <Content Include="Areas\Administrator\Views\Books\Details.cshtml" />
+    <Content Include="Areas\Administrator\Views\Books\Edit.cshtml" />
+    <Content Include="Areas\Administrator\Views\Books\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />

@@ -1,0 +1,286 @@
+﻿@model IEnumerable<LakeInn.Models.DataModels.Book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrator/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Booking Table</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+            <div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row">
+                <div class="col-sm-12">
+                    <table id="example1" class="table table-bordered table-hover dataTable dtr-inline">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Status)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @if (item.Status)
+                                        {
+                                            <span class="badge badge-success">Checked</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-danger">Unchecked</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm details-click" href="javascript:void(0)" data-id="@item.Id" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-danger btn-sm click-delete" href="javascript:void(0)" data-id="@item.Id">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="h2-responsive product-name">
+                            <strong id="PName">Booking</strong>
+                        </h2>
+
+                        <!--Accordion wrapper-->
+                        <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+                            <!-- Accordion card -->
+                            <div class="card">
+                                <!-- Card header -->
+                                <div class="card-header" role="tab" id="headingOne1">
+                                    <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                                       aria-controls="collapseOne1">
+                                        <h5 class="mb-0">
+                                            Customer Infomation <i class="fas fa-angle-down rotate-icon float-right"></i>
+                                        </h5>
+                                    </a>
+                                </div>
+
+                                <!-- Card body -->
+                                <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+                                     data-parent="#accordionEx">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p>Full Name: <b style="display: block"><span id="MFn">ABC</span></b></p>
+                                                <p>Email: <b style="display: block"><span id="MEmail">ABC</span></b></p>
+                                                <p>Address: <b style="display: block"><span id="MAdd">ABC</span></b></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Identity: <b style="display: block"><span id="MIden">ABC</span></b></p>
+                                                <p>Phone: <b style="display: block"><span id="MPhone">ABC</span></b></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Accordion card -->
+                            <!-- Accordion card -->
+                            <div class="card">
+
+                                <!-- Card header -->
+                                <div class="card-header" role="tab" id="headingTwo2">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                                       aria-expanded="false" aria-controls="collapseTwo2">
+                                        <h5 class="mb-0">
+                                            Room Infomation <i class="fas fa-angle-down rotate-icon float-right"></i>
+                                        </h5>
+                                    </a>
+                                </div>
+
+                                <!-- Card body -->
+                                <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+                                     data-parent="#accordionEx">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p>Check-in Date: <b style="display: block"><span id="PCID">ABC</span></b></p>
+                                                <p>Check-out Date: <b style="display: block"><span id="PCOD">ABC</span></b></p>
+                                                <p>Quantity Adults: <b style="display: block"><span id="PQA">ABC</span></b></p>
+                                                <p>Quantity Childrens: <b style="display: block"><span id="PQC">ABC</span></b></p>
+                                                <p>Status: <b style="display: block"><span id="PSt">ABC</span></b></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Date Created: <b style="display: block"><span id="PDC">ABC</span></b></p>
+                                                <p>Date Updated: <b style="display: block"><span id="PDU">ABC</span></b></p>
+                                                <p>Room Type: <b style="display: block"><span id="PRT">ABC</span></b></p>
+                                                <p>Quantity Room: <b style="display: block"><span id="PQR">ABC</span></b></p>
+                                                <p>Note: <b style="display: block"><span id="PNote">ABC</span></b></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- Accordion card -->
+
+                        </div>
+                        <!-- Accordion wrapper -->
+                        <!-- Add to Cart -->
+                        <div class="card-body">
+                            <div class="text-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" background-color: #a6c !important;">Close</button>
+                                <button class="btn btn-primary" id="sureCheck" type="button">
+                                    I'm sure checked
+                                    <i class="fas fa-check ml-2" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.Add to Cart -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $("#sureCheck").click(function () {
+            var id = $(this).attr('data-id');
+            var cf = confirm("Are you sure this checked");
+            if (cf) {
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("SetChecked")",
+                    data: { id: id },
+                    success: function (rs) {
+                            toastr.success(
+                                'Your has Checked!',
+                                'Notification!',
+                                {
+                                    timeOut: 1000,
+                                    fadeOut: 1000,
+                                    onHidden: function () {
+                                        window.location.reload();
+                                    }
+                                });
+                    }
+                });
+            }
+        });
+        $(".click-delete").click(function () {
+            var id = $(this).attr("data-id");
+            var cf = confirm("Are you sure this record?");
+            if (cf) {
+                $.ajax({
+                type: "GET",
+                url: "@Url.Action("DeleteBook")",
+                data: { id: id },
+                success: function (rs) {
+                    toastr.success(
+                        'Delete successfully!',
+                        'Notification!',
+                        {
+                            timeOut: 1000,
+                            fadeOut: 1000,
+                            onHidden: function () {
+                                window.location.reload();
+                            }
+                        });
+                }
+            });
+            }
+        });
+        $(".details-click").click(function () {
+            var id = $(this).attr("data-id");
+                $.ajax({
+                    type: "GET",
+                    url: "@Url.Action("Details")",
+                    data: { id: id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (rs) {
+                        var cid = getDate(rs.book.CID);
+                        var cod = getDate(rs.book.COD);
+                        var dc = getDate(rs.book.Date_Created);
+                        var du = getDate(rs.book.Date_Updated);
+
+                        $("#sureCheck").attr('data-id',rs.book.Id);
+                        // Customer information
+                        $("#MFn").text(rs.book.Name);
+                        $("#MEmail").text(rs.book.Email);
+                        $("#MAdd").text(rs.book.Address);
+                        $("#MIden").text(rs.book.Identity);
+                        $("#MPhone").text(rs.book.Phone);
+                        // Room information
+                        $("#PCID").text(cid);
+                        $("#PQA").text(rs.book.Qadult);
+                        $("#PQC").text(rs.book.Qchild);
+                        $("#PQR").text(rs.book.Qroom);
+                        $("#PCOD").text(cod);
+                        if (rs.book.Status) {
+                            $("#sureCheck").hide();
+                            $("#PSt").html('<span class="badge badge-success">Checked</span>');
+                        }
+                        else {
+                            $("#PSt").html('<span class="badge badge-danger">Unchecked</span>');
+                        }
+                        $("#PNote").text(rs.book.Note);
+                        $("#PDC").text(dc);
+                        $("#PDU").text(du);
+                        $.ajax({
+                            type: "GET",
+                            url: "@Url.Action("GetRoomType")",
+                            data: { id: rs.book.IdTypeRoom },
+                            success: function (rsa) {
+                                $("#PRT").text(rsa.rt.TypeName);
+                            }
+                        });
+                    }, error: function (e) {
+                        alert(e.responseText);
+                    }
+                });
+        });
+
+        function getDate(d) {
+            var date = new Date(parseInt((d).match(/\d+/)[0]));
+            var str = '';
+            str += date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+            return str;
+        }
+    </script>
+}

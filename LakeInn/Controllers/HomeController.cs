@@ -19,6 +19,7 @@ namespace LakeInn.Controllers
             ViewBag.Articles = db.Articles.Take(4);
             ViewBag.Team = db.Teams.OrderByDescending(x => Guid.NewGuid()).Take(2);
             ViewBag.RT = new SelectList(db.RoomTypes, "Id", "TypeName");
+            ViewBag.comment = db.Comment_Articles.Where(z => z.Status);
             ViewBag.Slides = db.Slides.Where(y=>y.Status);
             ViewBag.Banner_I1 = db.Banners.Where(x => x.Id == 1).SingleOrDefault();
             ViewBag.Banner_I2 = db.Banners.Where(x => x.Id == 2).SingleOrDefault();
@@ -82,6 +83,7 @@ namespace LakeInn.Controllers
             ViewBag.Tags = db.Tags.OrderByDescending(x => Guid.NewGuid()).Take(10);
             ViewBag.Cat = db.Categories.OrderByDescending(x => Guid.NewGuid()).Take(10);
             ViewBag.Art = db.Articles.Take(3).ToList();
+            ViewBag.cmt = db.Comment_Articles.Where(z => z.Status);
             return View();
         }
 
@@ -141,6 +143,7 @@ namespace LakeInn.Controllers
             ViewBag.Tags = db.Tags.OrderByDescending(x => Guid.NewGuid()).Take(10);
             ViewBag.Cat = db.Categories.OrderByDescending(x => Guid.NewGuid()).Take(10);
             ViewBag.Art = db.Articles.Take(3).ToList();
+            ViewBag.cmt = db.Comment_Articles.Where(z => z.Status);
             return View(dt);
         }
 

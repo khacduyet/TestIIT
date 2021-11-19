@@ -12,12 +12,21 @@
             <p class="title">Recent Posts</p>
             @foreach (var item in ViewBag.Art as IEnumerable<LakeInn.Models.DataModels.Article>)
             {
+                var cmt = ViewBag.cmt as IEnumerable<LakeInn.Models.DataModels.Comment_Article>;
+                var count = 0;
+                foreach (var c in cmt)
+                {
+                    if (c.Article_Id == item.Id)
+                    {
+                        count++;
+                    }
+                }
                 <div class="item">
                     <div class="row" style="margin-left: 0; margin-right: 0;">
                         <div class="col-4 image" style="background-image: url(@item.Image);"></div>
                         <div class="col-8">
                             <p class="article"><a href="@Url.Action("DetailArticle","Home",new { id=item.Id})">@item.Title</a></p>
-                            <p class="time"><span class="date">@item.Date_Created.ToString("MMM dd, yyyy")</span><span class="mes"><i class="fas fa-comment"></i> 0</span></p>
+                            <p class="time"><span class="date">@item.Date_Created.ToString("MMM dd, yyyy")</span><span class="mes"><i class="fas fa-comment"></i> @count</span></p>
                         </div>
                     </div>
                 </div>
