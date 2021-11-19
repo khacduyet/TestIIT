@@ -81,8 +81,7 @@
                         <h3 class="title-comment"><b>Comment</b> </h3>
                         @foreach (var item in ViewBag.Comment as IEnumerable<LakeInn.Models.DataModels.Comment_Article>)
                         {
-                            var cur_time = DateTime.Now;
-                            var time_elapsed = cur_time - item.Date_Created;
+                            var time_elapsed = DateTime.Now - item.Date_Created;
                             var years = time_elapsed.Days / 365;
                             var months = time_elapsed.Days / 30;
                             var weeks = time_elapsed.Days / 7;

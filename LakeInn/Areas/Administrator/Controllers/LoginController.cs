@@ -18,6 +18,11 @@ namespace LakeInn.Areas.Administrator.Controllers
         // GET: Administrator/Login
         public ActionResult Index()
         {
+            var ss = (User)Session["User"];
+            if (ss != null)
+            {
+                return RedirectToAction("Index","Admin");
+            }
             return View();
         }
         [HttpPost]

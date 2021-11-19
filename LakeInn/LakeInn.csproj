@@ -150,6 +150,7 @@
     <Compile Include="Areas\Administrator\Controllers\TeamsController.cs" />
     <Compile Include="Areas\Administrator\Controllers\UsersController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2410,6 +2411,8 @@
     <Content Include="Views\Partial\_Footer.cshtml" />
     <Content Include="Views\Home\OurTeam.cshtml" />
     <Content Include="Views\Home\RoomRate.cshtml" />
+    <Content Include="Views\Error\Error404.cshtml" />
+    <Content Include="Views\Error\Error500.cshtml" />
     <None Include="Views\Home\Article.cshtml" />
     <Content Include="Views\Home\DetailArticle.cshtml" />
     <Content Include="Views\Home\Galery.cshtml" />
