@@ -89,3 +89,4 @@ D:\Project IIT\LakeInn\LakeInn\obj\Debug\LakeInn.csproj.CoreCompileInputs.cache
 D:\Project IIT\LakeInn\LakeInn\obj\Debug\LakeInn.csproj.CopyComplete
 D:\Project IIT\LakeInn\LakeInn\obj\Debug\LakeInn.dll
 D:\Project IIT\LakeInn\LakeInn\obj\Debug\LakeInn.pdb
+D:\Project IIT\LakeInn\LakeInn\obj\Debug\LakeInn.csproj.AssemblyReference.cache
